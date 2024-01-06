@@ -14,9 +14,9 @@ spec:
     spec:
       containers:
       - name: your-app
-        image: your-docker-image
+        image: dakshayini08v/django-ci-cd-implementation
         ports:
-        - containerPort: 8001
+        - containerPort: 8000
 ---
 apiVersion: v1
 kind: Service
@@ -27,6 +27,6 @@ spec:
     app: your-app
   ports:
     - protocol: TCP
-      port: 81
-      targetPort: 8001
+      port: 80
+      targetPort: 8000
   type: LoadBalancer
