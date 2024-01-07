@@ -55,12 +55,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Uncomment the following lines if you need to set up kubectl with a kubeconfig file
-      # - name: Set up kubectl
-      #   uses: azure/kubernetes-set-context@v1
-      #   with:
-      #     kubeconfig: path/to/your/kubeconfig.yaml
+      # - name: Deploy to Kubernetes
+      #   if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      #   run: kubectl apply -f deployment.yml
 
-      - name: Deploy to Kubernetes
+      - name: Deploy with Docker Compose
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        run: kubectl apply -f deployment.yml
+        run: docker-compose -f docker-compose.yml up -d
