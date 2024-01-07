@@ -1,0 +1,66 @@
+name: CI/CD with Kubernetes
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: dakshayini08v
+          password: Welcome@123
+
+      - name: Build and push Docker image
+        run: |
+          docker build -t django-ci-cd .
+          docker tag django-ci-cd dakshayini08v/django-ci-cd-implementation:latest
+          docker push dakshayini08v/django-ci-cd-implementation:latest
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.11
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run tests
+        run: python manage.py test
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    needs:
+      - build
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Uncomment the following lines if you need to set up kubectl with a kubeconfig file
+      # - name: Set up kubectl
+      #   uses: azure/kubernetes-set-context@v1
+      #   with:
+      #     kubeconfig: path/to/your/kubeconfig.yaml
+
+      - name: Deploy to Kubernetes
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: kubectl apply -f deployment.yml
