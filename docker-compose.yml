@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  web:
+    image: dakshayini08v/django-ci-cd-implementation:latest
+    ports:
+      - "8010:8010"
+
+
