@@ -7,10 +7,8 @@ WORKDIR /app
 
 COPY requirements.txt /app/
 RUN pip install --upgrade pip setuptools
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install -r requirements.txt
 
 COPY . /app/
 
-EXPOSE 8000
-
-CMD [ "gunicorn", "--config" , "gunicorn_config.py", "app.wsgi:application" ]
+CMD [ "gunicorn", "--config" , "gunicorn_config.py", "myproject.wsgi:application" ]
