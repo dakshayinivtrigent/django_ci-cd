@@ -63,5 +63,3 @@ jobs:
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: docker-compose -f docker-compose.yml up -d
 
-
-
