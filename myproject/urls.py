@@ -7,3 +7,5 @@ urlpatterns = [
     path('greet',views.greet,name="Greet"),
     path('',views.sample,name="sample")
 ]
+
+
