@@ -54,8 +54,10 @@ jobs:
 
       - name: Deploy to Render
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        uses: renderapp/render-action@v1
+        # uses: renderapp/render-action@v1
         with:
-          renderToken: ${{ secrets.RENDER_API_KEY }}
-          renderYaml: render.yaml
+          token: ${{ secrets.RENDER_API_KEY }}
+          branch: deploy-from-actions
+          title: Deploy from GitHub Actions
+          body: Automated deployment from Github Actions
 
