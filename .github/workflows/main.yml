@@ -24,7 +24,7 @@ jobs:
           docker build -t django-ci-cd .
           docker tag django-ci-cd dakshayini08v/django-ci-cd-implementation:latest
           docker push dakshayini08v/django-ci-cd-implementation:latest
-
+       
   build:
     runs-on: ubuntu-latest
     container:
