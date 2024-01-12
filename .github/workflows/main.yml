@@ -49,14 +49,8 @@ jobs:
       - build
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - uses: peter-evans/create-pull-request@v4  # Assuming you want to create a pull request, adjust if needed.
-
-      - name: Deploy to Render
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        uses: renderapp/render-action@v1
+     - uses: actions/checkout@v3
+     - uses: peter-evans/create-pull-request@v4
         with:
           token: ${{ secrets.RENDER_API_KEY }}
           base: main  # Replace with Render's connected branch
