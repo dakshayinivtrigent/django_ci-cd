@@ -1,0 +1,12 @@
+services:
+  - name: django-app
+    envVars:
+      - key: DJANGO_SECRET_KEY
+        from: secret
+      - key: DEBUG
+        value: "false"
+    healthCheckPath: "/"
+
+env:
+  - name: RENDER_ENVIRONMENT_NAME
+    value: "django"  

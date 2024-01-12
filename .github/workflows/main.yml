@@ -52,7 +52,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Deploy with Docker Compose
+      - name: Deploy to Render
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        run: docker-compose -f docker-compose.yml up -d
+        uses: renderapp/action@v1
+        with:
+          renderToken: ${{ secrets.RENDER_API_KEY }}
+          renderYaml: render.yaml
 
