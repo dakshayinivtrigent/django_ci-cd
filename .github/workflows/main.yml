@@ -57,7 +57,5 @@ jobs:
         # uses: renderapp/render-action@v1
         with:
           token: ${{ secrets.RENDER_API_KEY }}
-          branch: deploy-from-actions
-          title: Deploy from GitHub Actions
-          body: Automated deployment from Github Actions
+          
 
