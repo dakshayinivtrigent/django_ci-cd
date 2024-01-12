@@ -11,5 +11,5 @@ RUN pip install -r requirements.txt
 
 COPY . /app/
 
-CMD [ "gunicorn", "--config" , "gunicorn_config.py", "myproject.wsgi:application" ]
+CMD [ "gunicorn", "--config" , "gunicorn_config.py", "myproject.asgi:application" ]
 
