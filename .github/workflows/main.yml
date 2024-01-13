@@ -13,11 +13,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set Python Location
-        run: echo "pythonLocation=$(python -c 'import sys; print(sys.prefix)')" >> $GITHUB_ENV
-
-      - name: Add Python to PATH
-        run: echo "PATH=$PATH:$(python -c 'import sys; print(sys.path[1])')" >> $GITHUB_ENV
+      - name: Set Python Location and PATH
+        run: |
+          echo "pythonLocation=$(python -c 'import sys; print(sys.prefix)')" >> $GITHUB_ENV
+          echo "PATH=$PATH:$(python -c 'import sys; print(sys.path[1])')" >> $GITHUB_ENV
 
       - name: Login to Docker Hub
         uses: docker/login-action@v1
@@ -30,7 +29,7 @@ jobs:
           docker build -t django-ci-cd .
           docker tag django-ci-cd dakshayini08v/django-ci-cd-implementation:latest
           docker push dakshayini08v/django-ci-cd-implementation:latest
-       
+
   build:
     runs-on: ubuntu-latest
     container:
@@ -42,7 +41,7 @@ jobs:
 
       - name: Upgrade setuptools
         run: python -m pip install --upgrade setuptools
-        
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
