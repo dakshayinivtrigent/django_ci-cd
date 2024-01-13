@@ -66,5 +66,3 @@ jobs:
       - name: Monitor deployment status (optional)
         run: |
           # Use Render's API or CLI to monitor deployment progress and status
-
-
