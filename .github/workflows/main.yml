@@ -33,7 +33,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container:
-      image: python:3.10
+      image: python:3.11
+
+    env:
+      ACTIONS_ALLOW_UNSECURE_COMMANDS: true
 
     steps:
       - name: Checkout code
@@ -66,7 +69,7 @@ jobs:
         uses: peter-evans/create-pull-request@v2
         with:
           token: ${{ secrets.RENDER_API_KEY }}
-          base: main  # Replace with Render's connected branch
+          base: main
           branch: deploy-from-actions
           title: Deploy from GitHub Actions
           body: Automated deployment from GitHub Actions
