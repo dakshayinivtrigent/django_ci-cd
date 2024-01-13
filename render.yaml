@@ -1,5 +1,5 @@
 services:
-  - name: django-app
+  - name: django
     envVars:
       - key: DJANGO_SECRET_KEY
         from: secret
