@@ -52,7 +52,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
-          token: ${{ secrets.MY_GITHUB_TOKEN }}
+          token: ${{ secrets.MY_GITHUB_TOCKEN }}
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v2
