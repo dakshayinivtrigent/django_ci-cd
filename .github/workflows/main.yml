@@ -13,6 +13,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Set Python Location
+        run: echo "pythonLocation=$(python -c 'import sys; print(sys.prefix)')" >> $GITHUB_ENV
+
+      - name: Add Python to PATH
+        run: echo "PATH=$PATH:$(python -c 'import sys; print(sys.path[1])')" >> $GITHUB_ENV
+
       - name: Login to Docker Hub
         uses: docker/login-action@v1
         with:
