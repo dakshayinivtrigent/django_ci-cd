@@ -62,8 +62,6 @@ jobs:
         with:
           token: ${{ secrets.RENDER_API_KEY }}
           base: main
-          branch: deploy-from-actions
-          title: Deploy from GitHub Actions
-          body: Automated deployment from GitHub Actions
+         
 
       
