@@ -62,6 +62,10 @@ jobs:
         with:
           token: ${{ secrets.RENDER_API_KEY }}
           base: main
+
+      - name: Deployment of Docker image
+       uses: actions/setup-python@v2
+       with: ${{ secrets.CONTAINERIZED_DJANGO_APP }}
          
 
       
