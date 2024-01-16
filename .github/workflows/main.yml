@@ -56,12 +56,13 @@ jobs:
         uses: actions/checkout@v3
         with:
           token: ${{ secrets.MY_GITHUB_TOCKEN }}
+          render-token: ${{ secrets.RENDER_API_KEY }}
 
-      - name: Create Pull Request
-        uses: actions/setup-python@v2
-        with:
-          token: ${{ secrets.RENDER_API_KEY }}
-          base: main
+      # - name: Create Pull Request
+      #   uses: actions/setup-python@v2
+      #   with:
+      #     token: ${{ secrets.RENDER_API_KEY }}
+      #     base: main
          
 
       
